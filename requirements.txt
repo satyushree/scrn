@@ -1,0 +1,5 @@
+pyrogram
+https://github.com/Tinche/aiofiles/archive/master.zip
+tgcrypto
+motor
+dnspython
