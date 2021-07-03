@@ -39,18 +39,9 @@
       "description": "Authorised user(s) id separated by space.",
       "value": ""
     },
-    "HOST": {
-      "description": "Public URL of streaming service (https://github.com/TGExplore/musical-waddle)",
-      "value": ""
-    },
     "MAX_PROCESSES_PER_USER": {
       "description": "Number of parallel processes each user can have, defaults to 2.",
       "value": "2",
-      "required": false
-    },
-    "MAX_TRIM_DURATION": {
-      "description": "Maximum allowed seconds for trimming. Defaults to 600.",
-      "value": "600",
       "required": false
     },
     "TRACK_CHANNEL": {
