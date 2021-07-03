@@ -38,31 +38,3 @@ async def _(c, m):
                 quote=True
             )
             return
-    
-    if m.document:
-        if "video" not in m.document.mime_type:
-            await m.reply_text(f"**😟 Sorry! Only support Media Files.**\n**Your File type :** `{m.document.mime_type}.`", quote=True)
-
-    if not is_valid_file(m):
-        return
-    
-    snt = await m.reply_text("Hi there, Please wait while I'm getting everything ready to process your request!", quote=True)
-    
-    file_link = generate_stream_link(m)
-    
-    duration = await get_duration(file_link)
-    if isinstance(duration, str):
-        await snt.edit_text("😟 Sorry! I cannot open the file.")
-        l = await m.forward(Config.LOG_CHANNEL)
-        await l.reply_text(f'stream link : {file_link}\n\n {duration}', True)
-        return
-    
-    btns = gen_ik_buttons()
-    
-    if duration >= 600:
-        btns.append([InlineKeyboardButton('Generate Sample Video!', 'smpl')])
-    
-    await snt.edit_text(
-        text=f"Hi, Choose the number of screenshots you need.\n\nTotal duration: `{datetime.timedelta(seconds=duration)}` (`{duration}s`)",
-        reply_markup=InlineKeyboardMarkup(btns)
-    )
